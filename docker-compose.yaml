@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  petstore:
+    image: swaggerapi/petstore:latest
+    environment:
+      - SWAGGER_URL=${PETSTORE_URL}:${PETSTORE_PORT}
+      - SWAGGER_BASE_PATH=/v2
+    ports:
+      - ${PETSTORE_PORT}:8080
