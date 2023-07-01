@@ -23,6 +23,17 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "requests"
 version = "2.31.0"
 description = "Python HTTP for Humans."
@@ -57,11 +68,12 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "34432527688cc70ff8b18bc82aaf141269054cebdd962d698cde6cf757e41de8"
+content-hash = "8748dbe6ec42d4b7d2d0090b708b51645f47d7879cad9c22a87bba0ed04d75d2"
 
 [metadata.files]
 certifi = []
 charset-normalizer = []
 idna = []
+python-dotenv = []
 requests = []
 urllib3 = []
