@@ -93,14 +93,13 @@ def test_crud_user():
         assert get_body["id"] != id_user_create, f"User not deleted, field id found"
     else:
         assert response.status_code == HTTPStatus.NOT_FOUND, f"User not deleted, status line not equal Not Found"
-
         assert get_body["type"] == "error", f"Wrong field type after delete user"
         assert get_body["message"] == "User not found", f"Wrong field message after delete user"
 
 
 @pytest.mark.user
 def test_dublicate_user():
-    """Создаем одинаковых User"""
+    """Пробуем создать одинаковых User"""
 
     response = UserApiFunc.create(USER_BODY_CREATE)
     assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name}: create\n" \
