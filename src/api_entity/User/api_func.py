@@ -5,9 +5,7 @@
 from http import HTTPStatus
 import requests
 
-# from src.data_func import get_response_body
-from src.api_entity.User.api_path import UserFullPath
-
+from src.api_entity.User.api_path import UserFullPath, user_entity_name
 
 
 class UserApiFunc:
