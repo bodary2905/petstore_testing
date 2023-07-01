@@ -52,6 +52,19 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "strenum"
+version = "0.4.15"
+description = "An Enum that inherits from str."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+docs = ["sphinx", "sphinx-rtd-theme", "myst-parser"]
+release = ["twine"]
+test = ["pytest", "pytest-black", "pytest-cov", "pytest-pylint", "pylint"]
+
+[[package]]
 name = "urllib3"
 version = "2.0.3"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -68,7 +81,7 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "8748dbe6ec42d4b7d2d0090b708b51645f47d7879cad9c22a87bba0ed04d75d2"
+content-hash = "3eab902cedf5d41e30e93eefe56cdb61003c05609392f0186ab7854d49f3d32b"
 
 [metadata.files]
 certifi = []
@@ -76,4 +89,5 @@ charset-normalizer = []
 idna = []
 python-dotenv = []
 requests = []
+strenum = []
 urllib3 = []
