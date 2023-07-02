@@ -6,6 +6,16 @@
 
 ## Запуск тестов
 
+   ```
+   pytest --alluredir results
+   ```
+
+## Формирование Allure-отчета
+
+   ```
+   allure serve results
+   ```
+
 ## Развертывание сервиса
 
 1. Клонировать репозиторий с GitHub:
