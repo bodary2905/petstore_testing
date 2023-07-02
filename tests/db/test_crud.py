@@ -36,7 +36,7 @@ USER_DATA_UPDATE = {
 }
 
 
-@allure.severity(Severity.BLOCKER)
+@allure.severity(Severity.NORMAL)
 @allure.feature('DB-тесты для сущности User')
 @allure.story('Тесты на CRUD')
 @allure.title('Самый простой, позитивный тест')
