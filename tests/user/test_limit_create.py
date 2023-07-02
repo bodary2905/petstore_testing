@@ -41,48 +41,51 @@ limit_values = [
 
 @pytest.mark.positive
 @pytest.mark.user
+@pytest.mark.limit_create
 @pytest.mark.parametrize("limit", limit_values)
 def test_limit(limit):
-    """Тест граничных значений для User"""
+    """Тест граничных значений для User на create"""
     # ---------- CREATE USER ----------
     response = UserApiFunc.create(limit)
-    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name}: create for limit\n" \
+    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name}: create for limit_create\n" \
                                                   f"Actual: {response.status_code}. Expected 200\n" \
                                                   f"Message: {response.text}"
     # получаем body user после create
-    create_body = get_response_body(response, err_msg="Error in test_limit for create after create for limit")
+    create_body = get_response_body(response, err_msg="Error in test_limit after create")
     assert create_body[
-               "code"] == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after create for limit\n" \
+               "code"] == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after create for limit_create\n" \
                                          f"Actual: {create_body['code']}. Expected 200\n" \
                                          f"Body Message: {create_body['message']}"
     # ---------- GET USER ----------
     response = UserApiFunc.get(limit["username"])
-    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name}: get after create for limit\n" \
+    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name}: get after create for limit_create\n" \
                                                   f"Actual: {response.status_code}. Expected 200\n" \
                                                   f"Message: {response.text}"
     # получаем body user после get
-    get_body = get_response_body(response, err_msg="Error in test_limit after get for create limit")
+    get_body = get_response_body(response, err_msg="Error in test_limit after get for create limit_create")
     # удаляем поле "id" из словаря
     id_user_create = get_body.pop("id")
-    assert isinstance(id_user_create, int), "Wrong field with id in body get for create limit"
+    assert isinstance(id_user_create, int), "Wrong field with id in body get for create limit_create"
     # сравниваем отправленный и полученные словари
-    assert limit == get_body, f"Dict limit {limit} not equal dict {get_body}"
+    assert limit == get_body, f"Dict limit {limit} not equal dict {get_body} for limit_create"
     # ---------- DELETE USER ----------
     response = UserApiFunc.delete(limit["username"])
-    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after delete for limit\n" \
+    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after delete for limit_create\n" \
                                                   f"Actual: {create_body['code']}. Expected 200\n" \
                                                   f"Body Message: {create_body['message']}"
     # получаем body user после delete
-    delete_body = get_response_body(response, err_msg="Error in test_limit after delete for limit")
-    assert delete_body["code"] == HTTPStatus.OK, f"Wrong status code {user_entity_name}: delete\n" \
+    delete_body = get_response_body(response, err_msg="Error in test_limit after delete for limit_create")
+    assert delete_body["code"] == HTTPStatus.OK, f"Wrong status code {user_entity_name}: delete for limit_create\n" \
                                                  f"Actual: {response.status_code}. Expected 200\n" \
                                                  f"Message: {response.text}"
     # ---------- GET USER ----------
     response = UserApiFunc.get(limit["username"])
-    get_body = get_response_body(response, err_msg="Error in test_limit after get for delete limit")
+    get_body = get_response_body(response, err_msg="Error in test_limit after get for delete limit_create")
     if response.status_code == HTTPStatus.OK:  # так как может быть несколько user с одинаковыми именами
-        assert get_body["id"] != id_user_create, f"User not deleted, field id found"
+        assert get_body[
+                   "id"] != id_user_create, f"User not deleted, field id found. Error in test_limit for limit_create"
     else:
-        assert response.status_code == HTTPStatus.NOT_FOUND, f"User not deleted, status line not equal Not Found"
-        assert get_body["type"] == "error", f"Wrong field type after delete user"
-        assert get_body["message"] == "User not found", f"Wrong field message after delete user"
+        assert response.status_code == HTTPStatus.NOT_FOUND, f"User not deleted, status line not equal Not Found. Error in test_limit for limit_create"
+        assert get_body["type"] == "error", f"Wrong field type after delete user.  Error in test_limit for limit_create"
+        assert get_body[
+                   "message"] == "User not found", f"Wrong field message after delete user.  Error in test_limit for limit_create"
