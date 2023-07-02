@@ -28,6 +28,16 @@
 
 ## Запуск тестов
 
+   ```
+   pytest --alluredir results
+   ```
+
+## Формирование Allure-отчета
+
+   ```
+   allure serve results
+   ```
+
 Для запуска тестов в файле [setup.cfg](setup.cfg) реализован раздел [tool: pytest]:
 
 * testpaths = tests: путь до директории с тестами
