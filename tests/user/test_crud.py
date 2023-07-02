@@ -30,7 +30,7 @@ USER_BODY_UPDATE = {
 @pytest.mark.positive
 @pytest.mark.crud
 @pytest.mark.user
-def test_crud_user():
+def test_crud():
     """Тест CRUD для User"""
     # ---------- CREATE USER ----------
     response = UserApiFunc.create(USER_BODY_CREATE)
@@ -78,7 +78,7 @@ def test_crud_user():
     assert USER_BODY_UPDATE == get_body, f"Dict USER_BODY {USER_BODY_UPDATE} not equal dict {get_body}"
     # ---------- DELETE USER ----------
     response = UserApiFunc.delete(USER_BODY_CREATE["username"])
-    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after update\n" \
+    assert response.status_code == HTTPStatus.OK, f"Wrong status code {user_entity_name} in body after delete\n" \
                                                   f"Actual: {create_body['code']}. Expected 200\n" \
                                                   f"Body Message: {create_body['message']}"
     # получаем body user после delete
