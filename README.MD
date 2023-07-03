@@ -12,7 +12,7 @@
 * в файле [config.py](src/config.py) осуществляется загрузка переменных среды из
   файла [.env](.env). Обычно `.env` файл помещают в [.gitignore](.gitignore), но для проверки тестового задания оставила
   его в репозитории
-* в файле [db_client.py](src/db_client.py) реализован коиент для подключения к БД с помощью `psycopg2`
+* в файле [db_client.py](src/db_client.py) реализован клиент для подключения к БД с помощью `psycopg2`
 * в папке [tests](tests) хранятся файлы с тестами
     * в папке [api](tests/api) реализованы тесты для проверки API-запросов
         * в [test_crud.py](tests/api/user/test_crud.py) реализован тест с операциями CRUD для user
@@ -54,8 +54,17 @@
 
 ## Запуск тестов
 
+* запуск всех тестов с сохранением Allure-отчета в папку results
+
    ```
    pytest --alluredir results
+   ```
+
+* запуск тестов с использованием pytest-маркеров (полный список маркеров в [setup.cfg](setup.cfg)) + с сохранением
+  Allure-отчета в папку results
+
+   ```
+   pytest -m "db and crud" --alluredir results
    ```
 
 ## Формирование Allure-отчета
