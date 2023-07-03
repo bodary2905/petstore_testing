@@ -36,10 +36,10 @@ USER_DATA_UPDATE = {
 }
 
 
-@allure.severity(Severity.NORMAL)
-@allure.feature('DB-тесты для сущности User')
-@allure.story('Тесты на CRUD')
-@allure.title('Самый простой, позитивный тест')
+@allure.severity(Severity.CRITICAL)
+# @allure.feature('DB-тесты для сущности User')
+# @allure.story('Тесты на CRUD')
+# @allure.title('Самый простой, позитивный тест')
 @pytest.mark.positive
 @pytest.mark.db
 @pytest.mark.crud
@@ -76,6 +76,6 @@ def test_crud(db_client):
     with allure.step("Delete User"):
         UserDBFunc.delete_by_id(db_client, USER_DATA_CREATE["id"])
     # ---------- GET USER ----------
-    with allure.step("Get User after Update and check it"):
+    with allure.step("Get User after Delete and check it"):
         assert len(
             UserDBFunc.get_by_id(db_client, USER_DATA_CREATE["id"])) == 0, "Error: delete User from table UNSUCCESSFUL!"
