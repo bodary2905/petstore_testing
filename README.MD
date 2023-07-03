@@ -26,18 +26,6 @@
     * в файле [conftest.py](tests/conftest.py) реализованы фикстуры, которые используются в тестах
 * в файле [setup.cfg](setup.cfg) хранятся маркеры для запуска конкретных тестов
 
-## Запуск тестов
-
-   ```
-   pytest --alluredir results
-   ```
-
-## Формирование Allure-отчета
-
-   ```
-   allure serve results
-   ```
-
 ## Развертывание сервиса
 
 1. Клонировать репозиторий с GitHub:
@@ -62,4 +50,16 @@
 5. После окончания работы выполнить:
     ```
    docker-compose down
+   ```
+
+## Запуск тестов
+
+   ```
+   pytest --alluredir results
+   ```
+
+## Формирование Allure-отчета
+
+   ```
+   allure serve results
    ```
