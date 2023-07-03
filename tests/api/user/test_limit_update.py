@@ -55,7 +55,7 @@ limit_values = [
 @allure.severity(Severity.NORMAL)
 @pytest.mark.positive
 @pytest.mark.user
-@pytest.mark.limit_update
+@pytest.mark.api
 @pytest.mark.parametrize("limit", limit_values)
 def test_limit(limit):
     """Тест граничных значений для User на update"""

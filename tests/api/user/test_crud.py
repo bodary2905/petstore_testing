@@ -31,6 +31,7 @@ USER_BODY_UPDATE = {
 
 
 @allure.severity(Severity.CRITICAL)
+@pytest.mark.api
 @pytest.mark.positive
 @pytest.mark.crud
 @pytest.mark.user

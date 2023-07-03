@@ -9,6 +9,7 @@ from tests.api.user.test_crud import USER_BODY_CREATE
 
 
 @pytest.mark.user
+@pytest.mark.negative
 def test_dublicate_user():
     """Пробуем создать одинаковых User"""
 
