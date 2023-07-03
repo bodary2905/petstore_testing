@@ -1,8 +1,8 @@
 """Тесты CRUD User"""
 
 import pytest
-import json
 from http import HTTPStatus
+import json
 import allure
 from allure_commons.types import Severity, AttachmentType
 
@@ -30,6 +30,7 @@ USER_BODY_UPDATE = {
 }
 
 
+@allure.severity(Severity.CRITICAL)
 @pytest.mark.positive
 @pytest.mark.crud
 @pytest.mark.user
